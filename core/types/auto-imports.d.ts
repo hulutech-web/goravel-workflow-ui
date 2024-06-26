@@ -65,9 +65,13 @@ declare global {
   const useCommand: typeof import('../../src/composables/bus/useCommand')['default']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useDept: typeof import('../../src/composables/bus/useDept')['default']
   const useDevice: typeof import('../../src/composables/bus/useDevice')['default']
+  const useEmp: typeof import('../../src/composables/bus/useEmp')['default']
   const useErrorStore: typeof import('../../src/store/useErrorStore')['default']
   const useExcel: typeof import('../../src/composables/bus/useExcel')['default']
+  const useFlow: typeof import('../../src/composables/bus/useFlow')['default']
+  const useHome: typeof import('../../src/api/home/useHome')['default']
   const useLink: typeof import('vue-router')['useLink']
   const useLoadingStore: typeof import('../../src/store/useLoadingStore')['default']
   const useMenuStore: typeof import('../../src/store/useMenuStore')['default']
@@ -78,6 +82,9 @@ declare global {
   const useSlots: typeof import('vue')['useSlots']
   const useSocket: typeof import('../../src/api/socket/useSocket')['default']
   const useStorage: typeof import('../../src/composables/common/useStorage')['default']
+  const useTemplate: typeof import('../../src/composables/bus/useTemplate')['default']
+  const useTemplateForm: typeof import('../../src/composables/bus/useTemplateForm')['default']
+  const useTemplateform: typeof import('../../src/composables/bus/useTemplateform')['default']
   const useTipsStore: typeof import('../../src/store/useTipsStore')['default']
   const useTrack: typeof import('../../src/composables/bus/useTrack')['default']
   const useUser: typeof import('../../src/composables/bus/useUser')['default']
@@ -159,9 +166,12 @@ declare module 'vue' {
     readonly useCommand: UnwrapRef<typeof import('../../src/composables/bus/useCommand')['default']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
-    readonly useDevice: UnwrapRef<typeof import('../../src/composables/bus/useDevice')['default']>
+    readonly useDept: UnwrapRef<typeof import('../../src/composables/bus/useDept')['default']>
+    readonly useEmp: UnwrapRef<typeof import('../../src/composables/bus/useEmp')['default']>
     readonly useErrorStore: UnwrapRef<typeof import('../../src/store/useErrorStore')['default']>
     readonly useExcel: UnwrapRef<typeof import('../../src/composables/bus/useExcel')['default']>
+    readonly useFlow: UnwrapRef<typeof import('../../src/composables/bus/useFlow')['default']>
+    readonly useHome: UnwrapRef<typeof import('../../src/api/home/useHome')['default']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingStore: UnwrapRef<typeof import('../../src/store/useLoadingStore')['default']>
     readonly useMenuStore: UnwrapRef<typeof import('../../src/store/useMenuStore')['default']>
@@ -171,6 +181,8 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useSocket: UnwrapRef<typeof import('../../src/api/socket/useSocket')['default']>
     readonly useStorage: UnwrapRef<typeof import('../../src/composables/common/useStorage')['default']>
+    readonly useTemplate: UnwrapRef<typeof import('../../src/composables/bus/useTemplate')['default']>
+    readonly useTemplateForm: UnwrapRef<typeof import('../../src/composables/bus/useTemplateForm')['default']>
     readonly useTipsStore: UnwrapRef<typeof import('../../src/store/useTipsStore')['default']>
     readonly useTrack: UnwrapRef<typeof import('../../src/composables/bus/useTrack')['default']>
     readonly useUser: UnwrapRef<typeof import('../../src/composables/bus/useUser')['default']>
@@ -244,9 +256,12 @@ declare module '@vue/runtime-core' {
     readonly useCommand: UnwrapRef<typeof import('../../src/composables/bus/useCommand')['default']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
-    readonly useDevice: UnwrapRef<typeof import('../../src/composables/bus/useDevice')['default']>
+    readonly useDept: UnwrapRef<typeof import('../../src/composables/bus/useDept')['default']>
+    readonly useEmp: UnwrapRef<typeof import('../../src/composables/bus/useEmp')['default']>
     readonly useErrorStore: UnwrapRef<typeof import('../../src/store/useErrorStore')['default']>
     readonly useExcel: UnwrapRef<typeof import('../../src/composables/bus/useExcel')['default']>
+    readonly useFlow: UnwrapRef<typeof import('../../src/composables/bus/useFlow')['default']>
+    readonly useHome: UnwrapRef<typeof import('../../src/api/home/useHome')['default']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingStore: UnwrapRef<typeof import('../../src/store/useLoadingStore')['default']>
     readonly useMenuStore: UnwrapRef<typeof import('../../src/store/useMenuStore')['default']>
@@ -256,6 +271,8 @@ declare module '@vue/runtime-core' {
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useSocket: UnwrapRef<typeof import('../../src/api/socket/useSocket')['default']>
     readonly useStorage: UnwrapRef<typeof import('../../src/composables/common/useStorage')['default']>
+    readonly useTemplate: UnwrapRef<typeof import('../../src/composables/bus/useTemplate')['default']>
+    readonly useTemplateForm: UnwrapRef<typeof import('../../src/composables/bus/useTemplateForm')['default']>
     readonly useTipsStore: UnwrapRef<typeof import('../../src/store/useTipsStore')['default']>
     readonly useTrack: UnwrapRef<typeof import('../../src/composables/bus/useTrack')['default']>
     readonly useUser: UnwrapRef<typeof import('../../src/composables/bus/useUser')['default']>

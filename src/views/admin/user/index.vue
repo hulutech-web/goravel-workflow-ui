@@ -1,6 +1,6 @@
 <template>
     <div>
-用户管理
+        员工管理
     </div>
 </template>
 
@@ -8,6 +8,4 @@
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

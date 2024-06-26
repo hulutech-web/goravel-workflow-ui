@@ -34,7 +34,7 @@ const collapse = (collapsed, type) => {
                 </a-layout-content>
                 <a-layout-footer style='text-align: center'>
                     <div class='text-black' style="font-size: 12px;;">
-                        新能源电池后台管理 ©2024 Created by HuluTech
+                        审批流程框架 ©2024 Created by HuluTech
                     </div>
                 </a-layout-footer>
 

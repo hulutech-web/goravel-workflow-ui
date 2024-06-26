@@ -8,9 +8,9 @@ export default () => {
             method: "post",
             data: data
         }).then(res => {
-            const { token,user } = res.data
-            storage.set(CacheEnum.TOKEN_NAME, token)
-            storage.set(CacheEnum.USER, JSON.stringify(user))
+            const { data } = res
+            storage.set(CacheEnum.TOKEN_NAME, data.token)
+            storage.set(CacheEnum.USER, JSON.stringify(data.user))
             const route = router.resolve({ name: RouteEnum.ADMIN })
             location.href = "/#/admin/dashboard"
         })

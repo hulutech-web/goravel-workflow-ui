@@ -147,7 +147,7 @@ export default defineComponent({
   <div>
     <div class='logo'>
       <img src="@/assets/logo/charging.png" style="width:44px;" alt="">
-      <span :class="active == true ? 'block' : 'hidden'" class="sys-title">新能源监控系统</span>
+      <span :class="active == true ? 'block' : 'hidden'" class="sys-title">审批流程框架</span>
     </div>
     <a-menu mode='inline' theme='dark' @click='routeTo' @openChange="onOpenChange" v-model:open-keys="menuStore.openKeys"
       v-model:selectedKeys="menuStore.selectedKeys">

@@ -35,7 +35,7 @@
                 </a-form-item>
             </a-form>
             <div class="login-footer">
-                Copyright © 2024 新能源电池监控平台 All Rights Reserved.
+                Copyright © 2024 流程审批框架 All Rights Reserved.
             </div>
         </div>
 

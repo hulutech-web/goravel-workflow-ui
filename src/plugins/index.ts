@@ -10,7 +10,8 @@ import { setup as vue3Lottie } from './vue3Lottie'
 import { setup as Cropper } from './cropper'
 import { setup as VXETable } from './vxe-table'
 import { setup as Terminal } from './terminal'
-const modules = [axios, dayjs, antdvue, tailwindcss, router,VXETable, pinia,antIcons,loading,vue3Lottie,Cropper,Terminal]
+import { setup as MenuContext } from './menucontext'
+const modules = [axios, dayjs, antdvue, tailwindcss, router,VXETable, pinia,antIcons,loading,vue3Lottie,Cropper,Terminal,MenuContext]
 
 export default function register(app: App) {
   modules.map((setup) => setup(app))

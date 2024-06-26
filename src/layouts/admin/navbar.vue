@@ -20,7 +20,6 @@ const logout=()=>{
 <template>
   <div class="flex justify-between  h-full items-stretch bg-white">
     <Breadcrumb style="height:80px;display:flex;justify-content: center;align-items: center;" />
-    <HistoryMenu style="flex:1;height:80px;"/>
     <div class="flex justify-between items-center relative" style="width:300px;">
       <a-input-search style="width: 200px" v-model:value="keyword" placeholder="快捷菜单" enter-button
         @search="onSearch" />

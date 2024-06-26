@@ -8,6 +8,9 @@ dependencies:
   '@ant-design/icons-vue':
     specifier: ^7.0.1
     version: 7.0.1(vue@3.4.15)
+  '@imengyu/vue3-context-menu':
+    specifier: ^1.4.1
+    version: 1.4.1
   '@vueuse/core':
     specifier: ^10.7.2
     version: 10.7.2(vue@3.4.15)
@@ -26,6 +29,9 @@ dependencies:
   echarts:
     specifier: ^5.5.0
     version: 5.5.0
+  jsplumb:
+    specifier: ^2.15.6
+    version: 2.15.6
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
@@ -660,6 +666,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@imengyu/vue3-context-menu@1.4.1:
+    resolution: {integrity: sha512-34WInBVx0Mr0zSsRCQWG7ezHk0JzOuZqE4T8ywI82mbk/jfWBRtTkKHYSZbtmw2oYEfDFwCWdM/gur7QFAXYMA==}
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1706,6 +1716,10 @@ packages:
 
   /jsonc-parser@3.2.1:
     resolution: {integrity: sha512-AilxAyFOAcK5wA1+LeaySVBrHsGQvUFCDWXKpZjzaL0PqW+xfBOttn8GNtWKFWqneyMZj41MWF9Kl6iPWLwgOA==}
+    dev: false
+
+  /jsplumb@2.15.6:
+    resolution: {integrity: sha512-sIpbpz5eMVM+vV+MQzFCidlaa1RsknrQs6LOTKYDjYUDdTAi2AN2bFi94TxB33TifcIsRNV1jebcaxg0tCoPzg==}
     dev: false
 
   /lilconfig@2.1.0:
