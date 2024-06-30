@@ -4,7 +4,7 @@
       <context-menu-item @click="addNode">
         <template #default>
           <div class="h-12">
-            <hulu-icon name="icon-add-location"></hulu-icon>
+            <HuluIcon name="icon-add-location"></HuluIcon>
             <span>添加步骤</span>
           </div>
         </template>
@@ -12,7 +12,7 @@
       <context-menu-item @click="onMenuClick(1)">
         <template #default>
           <div class="h-12">
-            <hulu-icon name="icon-box"></hulu-icon>
+            <HuluIcon name="icon-box"></HuluIcon>
             <span>保存设计</span>
           </div>
         </template>
@@ -20,7 +20,7 @@
       <context-menu-item @click="onMenuClick(1)">
         <template #default>
           <div class="h-12">
-            <hulu-icon name="icon-refresh"></hulu-icon>
+            <HuluIcon name="icon-refresh"></HuluIcon>
             <span>刷新</span>
           </div>
         </template>
@@ -36,9 +36,12 @@ export default {
       type: Number,
       default: 0
     },
+    init: {
+      type: Function,
+      default: () => { }
+    },
   },
   data() {
-
     return {
       show: false,
       //For component
@@ -54,20 +57,31 @@ export default {
   mounted() {
     this.listenRightClick()
   },
+  expose: ['setPos'],
   methods: {
-    async addNode() {
-      //直接发送网络请求，后刷新页面
+    setPos(pos) {
+      this.optionsComponent.x = pos.x;
+      this.optionsComponent.y = pos.y;
+    },
+    async addNode(e) {
+      console.log(e)
+      //当前节点相对节点flow-chart-container的相对位置
+      let x = e.x - document.querySelector("#flow-chart-container")?.getBoundingClientRect().x;
+      let y = e.y - document.querySelector("#flow-chart-container")?.getBoundingClientRect().y;
       let node = {
         flow_id: this.flow_id,
-        left: `${this.optionsComponent.x}px`,
-        top: `${this.optionsComponent.y}px`,
+        left: `${x}px`,
+        top: `${y}px`,
       }
-
       await http.request({
         url: `process`,
         method: "POST",
         data: node
       });
+      if (this.init) {
+        await this.init();
+      }
+     
     },
     listenRightClick() {
       let pNode = document.querySelector("#flow-chart-container")
