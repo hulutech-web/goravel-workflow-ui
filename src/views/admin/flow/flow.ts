@@ -185,11 +185,19 @@ async function initFlowChart(initData, callback) {
             target: `node-${targetId}`,
             paintStyle: { stroke: "#006e54", strokeWidth: 3 }, // 线条样式
             endpointStyle: { fill: "#422517", radius: 4 }, // 端点样式
-            Connector: "Orthogonal",
+            connector: [
+              "Flowchart",
+              {
+                stub: [40, 60],
+                gap: 24,
+                cornerRadius: 24,
+                alwaysRespectStubs: true,
+              },
+            ],
             options: {
               stub: 25,
             },
-            anchors: [jsPlumb.DynamicAnchor], // 自动选择最佳连接点
+            anchor: "Continuous",
             overlays: [
               [
                 "Arrow",
