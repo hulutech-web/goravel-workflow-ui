@@ -83,9 +83,14 @@ const { loadDepts } = useDept()
 const props = defineProps({
     attrs: {
         type: Object,
+        default: () => { },
+    },
+    submitState: {
+        type: Object,
         default: () => { }
     }
-})
+});
+const emit = defineEmits(["updateSubmitState"]);
 const sys = ref("0")
 const open = ref(false)
 const depts = ref([])

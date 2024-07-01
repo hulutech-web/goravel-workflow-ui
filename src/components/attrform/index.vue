@@ -1,39 +1,45 @@
 <template>
     <div>
-        <a-tabs v-model:activeKey="activeKey" type="card">
+        <div>
+            <a-tabs v-model:activeKey="activeKey" type="card">
+                <a-tab-pane key="1" tab="常规" style="height: 200px">
+                    <a-form-item label="步骤名称">
+                        <a-input v-model:value="formState.process.process_name"></a-input>
+                    </a-form-item>
+                    <a-form-item label="步骤类型">
+                        <a-radio-group v-model:value="formState.process.position" @change="selectStepType">
+                            <a-radio :value="1">正常步骤</a-radio>
+                            <a-radio v-if="formState.can_child" :value="2">转入子流程</a-radio>
+                            <a-radio :value="0">第一步</a-radio>
+                        </a-radio-group>
+                    </a-form-item>
+                    <a-divider></a-divider>
+                    <div v-if="attrs">
+                        <component :is="getCurrentComponent" :submitState="submitState"
+                            @updateSubmitState="updateSubmitState" :attrs="attrs" />
+                    </div>
+                </a-tab-pane>
+                <a-tab-pane key="2" tab="表单" style="height: 200px">
+                    <a-table bordered :columns="columns" :dataSource="dataSource"></a-table>
+                </a-tab-pane>
+                <a-tab-pane key="3" tab="权限" style="height: 200px">
+                    <Prms :attrs="attrs" :submitState="submitState" @updateSubmitState="updateSubmitState" />
+                </a-tab-pane>
+                <a-tab-pane key="4" tab="转出条件" style="height: 200px">
+                    <Condition :attrs="attrs" :submitState="submitState" @updateSubmitState="updateSubmitState" />
+                </a-tab-pane>
+                <a-tab-pane key="5" tab="样式" style="height: 200px">
+                    <div class="p-3">
+                        <Style :attrs="attrs" :submitState="submitState" @updateSubmitState="updateSubmitState" />
+                    </div>
+                </a-tab-pane>
 
-            <a-tab-pane key="1" tab="常规" style="height: 200px">
-                <a-form-item label="步骤名称">
-                    <a-input v-model:value="formState.process.process_name"></a-input>
-                </a-form-item>
-                <a-form-item label="步骤类型">
-                    <a-radio-group v-model:value="formState.process.position" @change="selectStepType">
-                        <a-radio :value="1">正常步骤</a-radio>
-                        <a-radio v-if="formState.can_child" :value="2">转入子流程</a-radio>
-                        <a-radio :value="0">第一步</a-radio>
-                    </a-radio-group>
-                </a-form-item>
-                <a-divider></a-divider>
-                <div v-if="attrs">
-                    <component :is="getCurrentComponent" :attrs="attrs" />
-                </div>
-            </a-tab-pane>
-            <a-tab-pane key="2" tab="表单" style="height: 200px">
-                <a-table bordered :columns="columns" :dataSource="dataSource"></a-table>
-            </a-tab-pane>
-            <a-tab-pane key="3" tab="权限" style="height: 200px">
-                <Prms :attrs="attrs" />
-            </a-tab-pane>
-            <a-tab-pane key="4" tab="转出条件" style="height: 200px">
-                <Condition :attrs="attrs" />
-            </a-tab-pane>
-            <a-tab-pane key="5" tab="样式" style="height: 200px">
-                <div class="p-3">
-                    <Style :attrs="attrs" />
-                </div>
-            </a-tab-pane>
-        </a-tabs>
+            </a-tabs>
+
+        </div>
+
     </div>
+
 </template>
 
 <script lang='ts'>
@@ -43,6 +49,7 @@ import Style from './Style.vue'
 import Prms from './Prms.vue'
 import Condition from './Condition.vue'
 import { icons } from './icon'
+
 export default {
     components: {
         FieldEnd,
@@ -52,7 +59,9 @@ export default {
         Style
     },
     props: ['attrs'],
-    setup(props) {
+    setup(props, context) {
+        const processNameRef = ref(null)
+        const processTypeRef = ref(null)
         const MyIcons = ref(icons)
         const columns = [
             {
@@ -71,7 +80,28 @@ export default {
                 key: 'field_type',
             },
         ];
-
+        const submitState = ref({
+            process_name: "",
+            process_position: "",
+            process_to: [],
+            child_flow_id: "",
+            child_after: "",
+            range_emp_ids: [],
+            range_emp_text: "",
+            range_dept_ids: [],
+            range_dept_text: "",
+            range_role_ids: [],
+            range_role_text: "",
+            process_mode: "",
+            con_sign: "",
+            con_sign_vsb: "",
+            process_in_set: "",
+            process_condition: "",
+            style_width: "",
+            style_height: "",
+            style_color: "",
+            style_icon: "",
+        })
         // const dataSource = props.attrs.fields;
         const dataSource = computed(() => {
             return props.attrs.fields
@@ -105,18 +135,30 @@ export default {
         });
 
         const ic = ref("")
-        
+        const updateSubmitState = (form) => {
+            Object.assign(submitState.value, form)
+        }
+
+        const postData = () => {
+            return submitState.value
+        }
+        /* 对外保留postData方法 */
+
+
         return {
             activeKey,
             formState,
+            submitState,
+            updateSubmitState,
             selectStepType,
             getCurrentComponent,
             dataSource,
             columns,
             MyIcons,
-            ic
+            ic,
+            postData
         };
-    },
+    }
 };
 
 </script>

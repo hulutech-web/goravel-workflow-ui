@@ -137,7 +137,8 @@ interface Expression {
 }
 const { getCurrCond } = useProcess()
 export default {
-    props: ["attrs"],
+    props: ["attrs","submitState"],
+    emits: ['updateSubmitState'],
     data() {
         return {
             fields: [],

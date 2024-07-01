@@ -50,11 +50,16 @@
 import { watch } from 'vue';
 
 const props = defineProps({
-    attrs: {
-        type: Object,
-        default: () => { }
-    }
-})
+  attrs: {
+    type: Object,
+    default: () => { },
+  },
+  submitState:{
+    type:Object,
+    default:()=>{}
+  }
+});
+const emit = defineEmits(["updateSubmitState"]);
 const process=ref({})
 const flows=ref([])
 const processes=ref([])

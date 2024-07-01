@@ -1,14 +1,10 @@
 <template>
     <div>
         <a-card>
-            <div class="flex justify-evenly">
+            <div>
                 <a-space>
                     <a-button type="primary" @click="saveDesign">保存设计</a-button>
                     <a-button type="primary" @click="publishDesign">发布流程</a-button>
-                </a-space>
-                <a-space>
-                    <a-button type="primary" ghost @click="changePos">调整位置</a-button>
-                    <a-button type="primary" ghost @click="linkNode">连接步骤</a-button>
                 </a-space>
             </div>
         </a-card>
@@ -28,8 +24,15 @@
             </div>
         </div>
 
-        <a-modal v-model:open="open" width="1200px" title="节点设计" centered :bodyStyle="{ height: '600px' }">
-            <attrform :attrs="attrs" />
+        <a-modal v-model:open="open" style="position: relative;" width="1200px" :footer="false" title="节点设计" centered
+            :bodyStyle="{ height: '600px' }">
+            <attrform :attrs="attrs" ref="attrFormRef" />
+
+            <div class="absolute bottom-0 left-0 ml-5 mb-5">
+                <a-button type="primary" @click="onSubmit">
+                    <SendOutlined />提交
+                </a-button>
+            </div>
         </a-modal>
     </div>
 
@@ -46,12 +49,21 @@ const nodeList = ref([])
 const flow = ref({})
 const menuRef = ref({})
 const open = ref(false)
+
+const attrFormRef = ref(null)
+
+const onSubmit = () => {
+    const data = attrFormRef.value.postData()
+    console.log("最顶端父级获取数据",data)
+}
+
 const init = async () => {
     const { data } = await loadFlowDesign(+id)
     flow.value = data
     jsplumbJSON.value = JSON.parse(data.jsplumb)
     nodeList.value = jsplumbJSON.value.list
 }
+
 
 onMounted(async () => {
     await initAll()
@@ -73,7 +85,7 @@ const setProcess = async (node) => {
     open.value = true
     const { data } = await loadAttributes(node.id)
     attrs.value = data
-    console.log("全局attrs",attrs.value)
+    console.log("全局attrs", attrs.value)
 
 }
 const linkNode = () => { }
@@ -108,6 +120,11 @@ const publishDesign = () => {
     height: 750px;
     border: 1px solid #ccc;
     position: relative;
+    background-image:
+        linear-gradient(90deg, rgba(200, 200, 200, 0.2) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(200, 200, 200, 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* 这控制了网格线之间的间距 */
 }
 
 .node {
